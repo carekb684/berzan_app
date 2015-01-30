@@ -21,6 +21,11 @@ $maten[9] = "<p>Pytt i panna, rödbetor</p><p>Kycklinglevergryta, eko ris</p>";
 
 
 
+if(isset($_POST["action"])){
+$vy = $_POST["action"];
+} else {
+    $vy = 1;
+}
 
 
 
@@ -33,7 +38,7 @@ echo "<div id='matsedel'>";
 echo "<h2> Matsedel </h2>";
 echo "<ul>";
 echo "</form method='POST'>";
-switch ($_POST["action"]) {
+switch ($vy) {
     case 1 :
         $index = date("N")-1;
         $dag = date("l");
