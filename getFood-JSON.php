@@ -28,7 +28,7 @@ header('Content-Type: text/html; charset=utf-8');
  * @return type String
  * 
  * © ph0gel, 2015
- */
+ */ 
 function getFood($week, $day, $food) {
     $data = json_decode(file_get_contents('http://meny.dinskolmat.se/berzeliusskolan/?fmt=json'), true);
 

@@ -1,4 +1,5 @@
 <?php
+
 include './getFood-JSON.php';
 //$schemaDag = array();
 //        $schemaDag[] = array("dag" => "man", "datum" => "27/1", "mat" => "Järpar");
@@ -7,25 +8,27 @@ include './getFood-JSON.php';
 
 
 $maten = array();
-$maten[0] = "<p>Pytt i panna, rödbetor</p><p>Kycklinglevergryta, eko ris</p>";
-$maten[1] = "<p>Pytt i panna</p><p>Kycklinglevergryta, eko ris</p>";
-$maten[2] = "<p>Potatis</p><p>Kycklinglevergryta, eko ris</p>";
-$maten[3] = "<p>Mat</p><p>Kycklinglevergryta, eko ris</p>";
-$maten[4] = "<p>Janne</p><p>Kycklinglevergryta, eko ris</p>";
-$maten[5] = "<p>Pytt i panna, rödbetor</p><p>Kycklinglevergryta, eko ris</p>";
-$maten[6] = "<p>Pytt i panna, rödbetor</p><p>Kycklinglevergryta, eko ris</p>";
-$maten[7] = "<p>Pytt i panna, rödbetor</p><p>Kycklinglevergryta, eko ris</p>";
-$maten[8] = "<p>Pytt i panna, rödbetor</p><p>Kycklinglevergryta, eko ris</p>";
-$maten[9] = "<p>Pytt i panna, rödbetor</p><p>Kycklinglevergryta, eko ris</p>";
 
 
 
 
 
 
-for($i=0;$i<=2;$i++){
-    $test = getFood(0, 0, $i);
-    echo $test;
+
+for ($i = 0; $i <= 4; $i++) {
+    for ($j = 0; $j <= 2; $j++) {
+        $test = getFood(0, $i, $j);
+        $matenvecka[$i][$j] = $test;
+    }
+    echo "<br>";
+}
+
+for ($i = 0; $i <= 4; $i++) {
+    for ($j = 0; $j <= 2; $j++) {
+        $test = getFood(0, $i, $j);
+        $matennastavecka[$i][$j] = $test;
+    }
+    echo "<br>";
 }
 
 
@@ -33,10 +36,8 @@ for($i=0;$i<=2;$i++){
 
 
 
-
-
-if(isset($_POST["action"])){
-$vy = $_POST["action"];
+if (isset($_POST["action"])) {
+    $vy = $_POST["action"];
 } else {
     $vy = 1;
 }
@@ -54,46 +55,41 @@ echo "<ul>";
 echo "</form method='POST'>";
 switch ($vy) {
     case 1 :
-        $index = date("N")-1;
+        $index = date("N") - 1;
         $dag = date("l");
         echo $dag;
-        echo $maten[$index];
+
+
+        $mat = getFood(0, $dag, 0);
+        echo $mat;
+        $mat2 = getFood(0, $dag, 1);
+        echo $mat2;
+        $mat3 = getFood(0, $dag, 2);
+        echo $mat3;
 
         break;
     case 2:
-        echo $maten[0];
-        echo $maten[1];
-        echo $maten[2];
-        echo $maten[3];
-        echo $maten[4];
+        for ($i = 0; $i <= 4; $i++) {
+            for ($j = 0; $j <= 2; $j++) {
+                echo $matenvecka[$i][$j] . " , ";
+            }
+            echo "<br>";
+        }
+
         break;
 
     case 3:
-        echo $maten[5];
-        echo $maten[6];
-        echo $maten[7];
-        echo $maten[8];
-        echo $maten[9];
+        for ($i = 0; $i <= 4; $i++) {
+            for ($j = 0; $j <= 2; $j++) {
+                echo $matennastavecka[$i][$j] . " , ";
+            }
+            echo "<br>";
+        }
         break;
 
 
     default:
         break;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>
 
