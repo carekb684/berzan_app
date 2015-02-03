@@ -1,5 +1,5 @@
 <?php
-
+include './getFood-JSON.php';
 //$schemaDag = array();
 //        $schemaDag[] = array("dag" => "man", "datum" => "27/1", "mat" => "Järpar");
 //        $schemaDag[] = array("dag" => "man", "datum" => "27/1", "mat" => "Järpar");
@@ -17,6 +17,20 @@ $maten[6] = "<p>Pytt i panna, rödbetor</p><p>Kycklinglevergryta, eko ris</p>";
 $maten[7] = "<p>Pytt i panna, rödbetor</p><p>Kycklinglevergryta, eko ris</p>";
 $maten[8] = "<p>Pytt i panna, rödbetor</p><p>Kycklinglevergryta, eko ris</p>";
 $maten[9] = "<p>Pytt i panna, rödbetor</p><p>Kycklinglevergryta, eko ris</p>";
+
+
+
+
+
+
+for($i=0;$i<=2;$i++){
+    $test = getFood(0, 0, $i);
+    echo $test;
+}
+
+
+
+
 
 
 
