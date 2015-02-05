@@ -1,16 +1,18 @@
 <?php
 
 include './getFood-JSON.php';
-//$schemaDag = array();
-//        $schemaDag[] = array("dag" => "man", "datum" => "27/1", "mat" => "Järpar");
-//        $schemaDag[] = array("dag" => "man", "datum" => "27/1", "mat" => "Järpar");
-//5lektioner 1 dag
-
 
 
 
 $index = date("N") - 1;
-$dag = date("l");
+
+
+
+$veckoDagar[0] = "Måndag";
+$veckoDagar[1] = "Tisdag";
+$veckoDagar[2] = "Onsdag";
+$veckoDagar[3] = "Torsdag";
+$veckoDagar[4] = "Fredag";
 
 for ($j = 0; $j <= 2; $j++) {
     $matidag[$j] = getFood(0, $index, $j);
@@ -60,7 +62,7 @@ echo "</form method='POST'>";
 
 switch ($vy) {
     case 1 :
-        echo $dag . "<br><br>";
+        echo $veckoDagar[$index] . "<br><br>";
 
 
         for ($j = 0; $j <= 2; $j++) {
@@ -71,6 +73,8 @@ switch ($vy) {
         break;
     case 2:
         for ($i = 0; $i <= 4; $i++) {
+            
+            echo  $veckoDagar[$i] . "<br>";
             for ($j = 0; $j <= 2; $j++) {
                 echo $matenvecka[$i][$j] . " ,<br> ";
             }
@@ -81,6 +85,8 @@ switch ($vy) {
 
     case 3:
         for ($i = 0; $i <= 4; $i++) {
+            
+            echo $veckoDagar[$i] . "<br>";
             for ($j = 0; $j <= 2; $j++) {
                 echo $matennastavecka[$i][$j] . " , <br>";
             }
