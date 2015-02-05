@@ -7,11 +7,14 @@ include './getFood-JSON.php';
 //5lektioner 1 dag
 
 
-$maten = array();
 
 
+$index = date("N") - 1;
+$dag = date("l");
 
-
+for ($j = 0; $j <= 2; $j++) {
+    $matidag[$j] = getFood(0, $index, $j);
+}
 
 
 
@@ -25,7 +28,7 @@ for ($i = 0; $i <= 4; $i++) {
 
 for ($i = 0; $i <= 4; $i++) {
     for ($j = 0; $j <= 2; $j++) {
-        $test = getFood(0, $i, $j);
+        $test = getFood(1, $i, $j);
         $matennastavecka[$i][$j] = $test;
     }
     echo "<br>";
@@ -53,25 +56,23 @@ echo "<div id='matsedel'>";
 echo "<h2> Matsedel </h2>";
 echo "<ul>";
 echo "</form method='POST'>";
+
+
 switch ($vy) {
     case 1 :
-        $index = date("N") - 1;
-        $dag = date("l");
-        echo $dag;
+        echo $dag . "<br><br>";
 
 
-        $mat = getFood(0, $dag, 0);
-        echo $mat;
-        $mat2 = getFood(0, $dag, 1);
-        echo $mat2;
-        $mat3 = getFood(0, $dag, 2);
-        echo $mat3;
+        for ($j = 0; $j <= 2; $j++) {
+            echo $matidag[$j] . "<br>";
+        }
+        
 
         break;
     case 2:
         for ($i = 0; $i <= 4; $i++) {
             for ($j = 0; $j <= 2; $j++) {
-                echo $matenvecka[$i][$j] . " , ";
+                echo $matenvecka[$i][$j] . " ,<br> ";
             }
             echo "<br>";
         }
@@ -81,7 +82,7 @@ switch ($vy) {
     case 3:
         for ($i = 0; $i <= 4; $i++) {
             for ($j = 0; $j <= 2; $j++) {
-                echo $matennastavecka[$i][$j] . " , ";
+                echo $matennastavecka[$i][$j] . " , <br>";
             }
             echo "<br>";
         }
