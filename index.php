@@ -62,6 +62,7 @@ echo "</form method='POST'>";
 
 switch ($vy) {
     case 1 :
+        echo "Idag:<br>";
         echo $veckoDagar[$index] . "<br><br>";
 
 
@@ -72,6 +73,8 @@ switch ($vy) {
 
         break;
     case 2:
+        echo "Denna vecka:<br>";
+        
         for ($i = 0; $i <= 4; $i++) {
             
             echo  $veckoDagar[$i] . "<br>";
@@ -84,6 +87,8 @@ switch ($vy) {
         break;
 
     case 3:
+        echo "Nästa vecka:<br>";
+        
         for ($i = 0; $i <= 4; $i++) {
             
             echo $veckoDagar[$i] . "<br>";

@@ -37,11 +37,17 @@ if (isset($_GET["klass"])) {
 }
 
 //sätt $klass till vad nu inställningen är i inlog-tabellen
+session_start();
+$_SESSION["anvnamn"] = 'idaekb123';
 
-$sql = "SELECT * FROM skapaUsers WHERE 1";
+$anvnamn = $_SESSION["anvnamn"];
+
+$sql = "SELECT klass FROM users WHERE anvnamn='".$anvnamn."'";
 $stmt = $dbh->prepare($sql);
 $stmt->execute();
-$klass = $stmt->fetchAll();
+$klass = $stmt->fetch();
+
+
 
 //vecka = heltal enligt ISO-8601
 //om inget anges s�tts den till nuvarande vecka
@@ -85,7 +91,7 @@ if (isset($_GET["height"])) {
 
 if (isset($klass)) {
     //echoar fullst�ndig img tag
-    echo '<img src="http://www.novasoftware.se/ImgGen/schedulegenerator.aspx?format=png&schoolid=89920/sv-se&type=1&id=' . $klass . '&period=&week=' . $vecka . '&day=' . (int) pow(2, $dag - 1) . '&width=' . $width . '&height=' . $height . '">';
+    echo '<img src="http://www.novasoftware.se/ImgGen/schedulegenerator.aspx?format=png&schoolid=89920/sv-se&type=1&id=' . $klass["klass"] . '&period=&week=' . $vecka . '&day=' . (int) pow(2, $dag - 1) . '&width=' . $width . '&height=' . $height . '">';
 } else {
     echo "klass inte definierad";
 }
