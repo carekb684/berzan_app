@@ -42,7 +42,7 @@ $_SESSION["anvnamn"] = 'idaekb123';
 
 $anvnamn = $_SESSION["anvnamn"];
 
-$sql = "SELECT klass FROM users WHERE anvnamn='".$anvnamn."'";
+$sql = "SELECT klass FROM users WHERE anvnamn='" . $anvnamn . "'";
 $stmt = $dbh->prepare($sql);
 $stmt->execute();
 $klass = $stmt->fetch();
@@ -91,8 +91,25 @@ if (isset($_GET["height"])) {
 
 if (isset($klass)) {
     //echoar fullst�ndig img tag
+    
+    $dag=2;
+    
+    echo "<div id='bild'>";
     echo '<img src="http://www.novasoftware.se/ImgGen/schedulegenerator.aspx?format=png&schoolid=89920/sv-se&type=1&id=' . $klass["klass"] . '&period=&week=' . $vecka . '&day=' . (int) pow(2, $dag - 1) . '&width=' . $width . '&height=' . $height . '">';
+    echo "</div>";
+    
+    if ($dag == 2) {
+
+        echo "<div id='iv'>";
+        echo "detta är ditt iv val";
+        echo "</div>";
+    }
 } else {
     echo "klass inte definierad";
 }
+
+$testhojd= $height * 0.22;
+
+
+
 ?>
