@@ -92,7 +92,7 @@ if (isset($_GET["height"])) {
 if (isset($klass)) {
     //echoar fullst�ndig img tag
     
-    $dag=2;
+    $dag=4;
     
     echo "<div id='bild'>";
     echo '<img src="http://www.novasoftware.se/ImgGen/schedulegenerator.aspx?format=png&schoolid=89920/sv-se&type=1&id=' . $klass["klass"] . '&period=&week=' . $vecka . '&day=' . (int) pow(2, $dag - 1) . '&width=' . $width . '&height=' . $height . '">';
@@ -100,8 +100,15 @@ if (isset($klass)) {
     
     if ($dag == 2) {
 
-        echo "<div id='iv'>";
-        echo "detta är ditt iv val";
+        echo "<div id='ivtis'>";
+        echo "detta är ditt iv";
+        echo "</div>";
+    }
+    
+    if ($dag == 4) {
+
+        echo "<div id='ivtor'>";
+        echo "detta är ditt iv";
         echo "</div>";
     }
 } else {
